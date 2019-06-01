@@ -25,7 +25,4 @@ def create_app(config_filename):
 
     app.config['SECRET_KEY'] = os.urandom(24)
 
-    # from .middleware import Middleware
-    # app.wsgi_app = Middleware(app.wsgi_app)
-
     return app
