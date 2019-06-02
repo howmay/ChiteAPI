@@ -1,23 +1,11 @@
-from pymongo import collection
-from chite.application import mongo
-
-
+import pymongo
 class MongoDB(object):
+    URI = 'mongodb://127.0.0.1:27017'
+    @staticmethod
+    def init():
+        client = pymongo.MongoClient(MongoDB.URI)
+        MongoDB.DATABASE = client['Chite']
     @staticmethod
     def Insert(collection: str, data) -> bool:
-        c = _get_collection(collection)
-        _id = c.insert_one(data).inserted_id
-        if _id is not None:
-            return True
-        return False
-
-    @staticmethod
-    def InsertMany(collection: str, data):
-        pass
-
-
-def _get_collection(collection: str) -> collection:
-    if collection == "product":
-        return mongo.db.product
-    elif collection == "material":
-        return mongo.db.material
+        MongoDB.DATABASE[collection].insert(data)
+        return True

@@ -3,25 +3,15 @@
 #from config import Config
 
 from flask import Flask, render_template
-from flask_mongoengine import MongoEngine
-
+from chite.store import MongoDB
 import os
 
-mongo = MongoEngine()
-
-
-def create_app(config_filename):
+def create_app(config):
     app = Flask(__name__)
-    app.config.from_object(config_filename)
-
-    mongo.init_app(app)
-
+    MongoDB.init()
     from .product import Product as product_blueprint
     app.register_blueprint(product_blueprint)
 
     from .material import Material as material_blueprint
     app.register_blueprint(material_blueprint)
-
-    app.config['SECRET_KEY'] = os.urandom(24)
-
     return app

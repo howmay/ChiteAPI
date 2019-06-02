@@ -3,8 +3,8 @@
 from . import Product
 from flask import jsonify, request, session, logging, abort
 from bson import json_util
-from chite.model import ProductModel, Test
-
+from chite.model import Test
+from datetime import datetime
 
 @Product.route('/product', methods=['GET'])
 def GetProduct():
@@ -28,6 +28,5 @@ def DeleteProduct():
 
 @Product.route('/test', methods=["GET"])
 def test():
-    Test().save()
-    data = Test.objects.all()
-    return jsonify(data), 200
+    Test('test1','test',datetime.utcnow()).insert()
+    return jsonify(Test('test1','test',datetime.now()).json()), 200
