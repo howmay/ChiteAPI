@@ -3,11 +3,11 @@
 #from config import Config
 
 from flask import Flask, render_template
-from flask_mongoengine import MongoEngine
+from flask_pymongo import MongoClient
 
 import os
 
-mongo = MongoEngine()
+mongo = MongoClient()
 
 
 def create_app(config_filename):
