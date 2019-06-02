@@ -4,7 +4,6 @@ from datetime import datetime
 
 class ProductModel(mongo.Document):
     _id = mongo.StringField()
-    product_id = mongo.StringField()
     material = mongo.StringField()
     images = mongo.ListField()
     productName = mongo.StringField()
