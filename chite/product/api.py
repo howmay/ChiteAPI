@@ -28,5 +28,6 @@ def DeleteProduct():
 
 @Product.route('/test', methods=["GET"])
 def test():
-    Test('test1','test',datetime.utcnow()).insert()
-    return jsonify(Test('test1','test',datetime.now()).json()), 200
+    data = Test('test1','test',datetime.utcnow())
+    data.insert()
+    return jsonify(data.json()), 200
