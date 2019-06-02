@@ -3,7 +3,7 @@
 from . import Product
 from flask import jsonify, request, session, logging, abort
 from bson import json_util
-from chite.model import Product
+from chite.model import ProductModel
 
 
 @Product.route('/product', methods=['GET'])

@@ -2,7 +2,7 @@ from .application import mongo
 from datetime import datetime
 
 
-class Product(mongo.Document):
+class ProductModel(mongo.Document):
     _id = mongo.StringField()
     product_id = mongo.StringField()
     material = mongo.StringField()
