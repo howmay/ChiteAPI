@@ -3,17 +3,19 @@ from chite.application import MongoDB
 from flask import jsonify
 
 class Test(object):
-    def __init__(self,title,content,createTime):
+    def __init__(self,title,content,createTime,tests):
         self.title = title
         self.content = content
         self.createTime = createTime
+        self.tests:list = tests
     def insert(self):
         MongoDB.Insert(collection='Test',data=self.json())
     def json(self):
         return {
             'title': self.title,
             'content': self.content,
-            'createTime' : self.createTime
+            'createTime' : self.createTime,
+            'tests': self.tests
         }
 # class ProductModel(mongo.Document):
 #     _id = mongo.StringField()
