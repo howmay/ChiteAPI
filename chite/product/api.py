@@ -13,6 +13,8 @@ def GetProduct():
 
 @Product.route('/product', methods=['POST'])
 def PostProduct():
+    data = request.json
+    print(data)
     return jsonify({}), 200
 
 
